@@ -4,14 +4,14 @@
 error_reporting(1);
 
 // Clicou em enviar?
-if ($_POST != NULL) {
+if ($_GET != NULL) {
 	
 	// Obtém os parâmetros
-	$nome = $_POST["nome"];
-	$matricula = $_POST["matricula"];
-	$email = $_POST["email"];
-	$sexo = $_POST["sexo"];
-	$curso = $_POST["curso"];
+	$nome = addslashes ($_GET["nome"]);
+	$matricula = addslashes ($_GET["matricula"]);
+	$email = addslashes ($_GET["email"]);
+	$sexo = addslashes ($_GET["sexo"]);
+	$curso = addslashes ($_GET["curso"]);
 	
 	// Conecta ao BD
 	$conexao = new mysqli( "localhost", "andrecos_unifacs", "unifacs123", "andrecos_unifacs" );
@@ -66,7 +66,7 @@ if ($_POST != NULL) {
 		<fieldset>
 			<legend>Cadastrar Aluno</legend>
 	
-		<form method="POST">
+		<form method="GET">
 		
 			Nome:<br>
 			<input type="text" name="nome" required maxlength="100">
